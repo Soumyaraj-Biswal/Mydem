@@ -1,0 +1,20 @@
+.thumbnail img{
+    width:100%;
+}
+.thumbnail{
+    padding: 0;
+}
+.thumbnail .caption-full{
+    padding: 9px;
+}
+.delete-form{
+    display: inline;
+}
+.notification{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: -15;
+    white-space: nowrap;
+    vertical-align: super;
+    border-radius: 10px;
+}

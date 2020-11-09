@@ -1,0 +1,40 @@
+<%- include("../partials/header") %>
+
+
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <form class="form-wrapper" action="/campgrounds" method="post" enctype="multipart/form-data">
+                            <input class="form-control" type="text" name="campground[name]" placeholder="enter name of campground">
+                            <select class="js-example-basic-multiple" style="width:100%;" name="category">
+                                <% cat.forEach(e=>{ %>
+                                    <option><%=e.type%></option>
+                                <% }); %>
+                            </select>
+
+                            <label for="image">Image</label>
+                            <input type="file" id="image" name="image" accept="image/*" required>
+                        
+                            <input type="text" name="campground[description]" placeholder="description" class="form-control">
+                            <textarea name="campground[markdown]" class="form-control"></textarea>
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">submit</button>
+                        
+                        </form>
+                        <a href="/campgrounds">Go back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2({
+            tags: true
+        });
+});
+</script>
+<%- include("../partials/footer") %>

@@ -1,0 +1,42 @@
+<%- include("../partials/header") %>
+<div class="panel panel-default">
+<div class="panel-heading">
+  <h4>Notifications</h2>
+</div>
+</div>
+
+  <% if(allNotifications.length){ %>
+    <% allNotifications.forEach(c=>{ %>
+      <% if(c){%>
+      <div class="panel panel-default">                  
+      <div class="panel-body">
+          <div class="media">
+              <div class="media-left">
+                <a href="/campgrounds/<%= c._id %>" >
+                  <img class="media-object" src="<%= c.image%>" alt="..." style="vertical-align: middle; width: 50px; height: 50px;">
+                </a>
+              </div>
+              <div class="media-body text-left">
+                  <a href="/campgrounds/<%= c._id %>" style="text-decoration: none; color: black;">
+                      
+                    <h4 class="media-heading"><%= c.name %></h4>
+                    <p><%= c.description.substring(0,100); %></p>
+                    <footer>
+                        <em>Submitted by: <a href="/user/<%= c.author.id %>"><%= c.author.username %></a>
+                    </footer>
+
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      <% }); %>
+    <% }else{ %>
+      <h1>Sorry!!</h1>
+    <% } %>
+
+
+
+
+<%- include("../partials/footer") %>

@@ -34,12 +34,12 @@
                                     </div><!-- end col -->
 
                                     <div class="blog-meta big-meta col-md-8">
-                                        <span class="bg-aqua"><a href="#" title=""><%= c.category.type %></a></span>
+                                        <span class="bg-aqua"><a href="/category/<%=c.category._id%>" title=""><%= c.category.type %></a></span>
                                         <h4><a href="/campgrounds/<%= c._id %>" title=""><%= c.name %></a></h4>
                                         <p><%= c.description.substring(0,100); %></p>
                                         <small><a href="/campgrounds/<%= c._id %>" title=""><i class="fa fa-eye"></i> 1887</a></small>
                                         <small><a href="/campgrounds/<%= c._id %>" title=""><%= moment(c.createdAt).fromNow() %></a></small>
-                                        <small><a href="/user/<%= c.author.id %>"><%= c.author.username %></a></small>
+                                        <small><a href="/user/<%= c.author.id %>">By <%= c.author.username %></a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
 
@@ -88,7 +88,7 @@
                         <div class="link-widget">
                             <ul>
                                 <% cat.forEach(ca=>{ %>
-                                    <li><a href="#"><%= ca.type %> <span>(<%= ca.posts.length %>)</span></a></li>
+                                    <li><a href="/category/<%=ca._id%>"><%= ca.type %> <span>(<%= ca.posts.length %>)</span></a></li>
                                 <% }); %>
                                 
                                 

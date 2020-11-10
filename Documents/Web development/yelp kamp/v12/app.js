@@ -37,6 +37,7 @@ app.use(require("express-session")({
     secret: 'secret',
     saveUninitialized: false,
     resave: false,
+    cookie:{maxAge:3600000},
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
@@ -71,6 +72,7 @@ var campgroundRoutes  =require("./routes/campgrounds"),
     commentRoutes  =require("./routes/comments"),
     searchRoutes = require("./routes/search"),
     indexRoutes  =require("./routes/index"),
+    categoryRoutes = require("./routes/catagory"),
     notificationRoutes = require("./routes/notification");
 
 app.use(indexRoutes);
@@ -78,6 +80,7 @@ app.use(searchRoutes);
 app.use("/campgrounds/:id/comments",commentRoutes);
 app.use("/campgrounds",campgroundRoutes);
 app.use(notificationRoutes);
+app.use(categoryRoutes);
 
 app.listen(process.env.PORT || 3000,function(){
     console.log("started");

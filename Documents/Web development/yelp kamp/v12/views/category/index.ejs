@@ -1,0 +1,67 @@
+<%- include("../partials/header") %>
+
+<div class="page-title wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>Category By: <%= category.type %></h2>
+            </div><!-- end col -->
+            <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/campgrounds">Home</a></li>
+                    
+                    <li class="breadcrumb-item active"><%= category.type %></li>
+                </ol>
+            </div><!-- end col -->                    
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div><!-- end page-title -->
+
+<section class="section wb">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                
+                <div class="page-wrapper">
+                    <div class="blog-list clearfix">
+                        <% if(camps.length < 1){ %>
+                            <div class="col-lg-12"> 
+                                <h1>Sorry Could'nt find anything &#128532;</h1>
+                            </div>
+                        <% }else {%> 
+                            <% camps.forEach(c=>{ %>
+                                <div class="blog-box row">
+                                    <div class="col-md-4">
+                                        <div class="post-media">
+                                            <a href="/campgrounds/<%= c._id %>" title="">
+                                                
+                                                <img class="img-fluid" src="<%= c.image%>" alt="...">  
+                                                
+                                                <div class="hovereffect"></div>
+                                            </a>
+                                        </div><!-- end media -->
+                                    </div><!-- end col -->
+
+                                    <div class="blog-meta big-meta col-md-8">
+                                        <span class="bg-aqua"><a href="/category/<%=category._id%>" title=""><%= category.type %></a></span>
+                                        <h4><a href="/campgrounds/<%= c._id %>" title=""><%= c.name %></a></h4>
+                                        <p><%= c.description.substring(0,100); %></p>
+                                        <small><a href="/campgrounds/<%= c._id %>" title=""><i class="fa fa-eye"></i> 1887</a></small>
+                                        <small><a href="/campgrounds/<%= c._id %>" title=""><%= moment(c.createdAt).fromNow() %></a></small>
+                                        <small><a href="/user/<%= c.author.id %>"><%= c.author.username %></a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                            <% }); %>
+                        <% }%>
+                    </div>
+                </div>
+            </div><!-- end col -->
+        </div><!-- end col -->        
+    </div>
+
+</section>
+
+<%- include("../partials/footer") %>

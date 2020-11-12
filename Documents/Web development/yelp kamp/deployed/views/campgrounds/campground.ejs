@@ -1,0 +1,106 @@
+
+<%- include("../partials/header") %>
+
+    
+
+    
+        
+
+        
+                
+                
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-list clearfix">
+                        <% if(camps.length < 1){ %>
+                            <div class="col-lg-12"> 
+                                <h1>Sorry Could'nt find anything &#128532;</h1>
+                            </div>
+                        <% }else {%> 
+                            <% camps.forEach(c=>{ %>
+                                <div class="blog-box row">
+                                    <div class="col-md-4">
+                                        <div class="post-media">
+                                            <a href="/campgrounds/<%= c._id %>" title="">
+                                                
+                                                <img class="img-fluid" src="<%= c.image%>" alt="...">  
+                                                
+                                                <div class="hovereffect"></div>
+                                            </a>
+                                        </div><!-- end media -->
+                                    </div><!-- end col -->
+
+                                    <div class="blog-meta big-meta col-md-8">
+                                        <span class="bg-aqua"><a href="/category/<%=c.category._id%>" title=""><%= c.category.type %></a></span>
+                                        <h4><a href="/campgrounds/<%= c._id %>" title=""><%= c.name %></a></h4>
+                                        <p><%= c.description.substring(0,100); %></p>
+                                        <small><a href="/campgrounds/<%= c._id %>" title=""><i class="fa fa-eye"></i> 1887</a></small>
+                                        <small><a href="/campgrounds/<%= c._id %>" title=""><%= moment(c.createdAt).fromNow() %></a></small>
+                                        <small><a href="/user/<%= c.author.id %>">By <%= c.author.username %></a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                            <% }); %>
+                        <% }%>
+                    </div>
+                </div>
+            </div><!-- end col -->
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div class="sidebar">
+                    
+
+                    <div class="widget">
+                        <h2 class="widget-title">Reading List</h2>
+                        <div class="blog-list-widget">
+                            <div class="list-group">
+                                <a href="garden-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 justify-content-between">
+                                        <img src="upload/garden_sq_09.jpg" alt="" class="img-fluid float-left">
+                                        <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
+                                        <small>12 Jan, 2016</small>
+                                    </div>
+                                </a>
+
+                                <a href="garden-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 justify-content-between">
+                                        <img src="upload/garden_sq_06.jpg" alt="" class="img-fluid float-left">
+                                        <h5 class="mb-1">Let's make an introduction for creative life</h5>
+                                        <small>11 Jan, 2016</small>
+                                    </div>
+                                </a>
+
+                                <a href="garden-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 last-item justify-content-between">
+                                        <img src="upload/garden_sq_02.jpg" alt="" class="img-fluid float-left">
+                                        <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
+                                        <small>07 Jan, 2016</small>
+                                    </div>
+                                </a>
+                            </div>
+                        </div><!-- end blog-list -->
+                    </div><!-- end widget -->
+                    <div class="widget">
+                        <h2 class="widget-title">Popular Categories</h2>
+                        <div class="link-widget">
+                            <ul>
+                                <% cat.forEach(ca=>{ %>
+                                    <li><a href="/category/<%=ca._id%>"><%= ca.type %> <span>(<%= ca.posts.length %>)</span></a></li>
+                                <% }); %>
+                                
+                                
+                            </ul>
+                        </div><!-- end link-widget -->
+                    </div><!-- end widget -->
+                </div><!-- end sidebar -->
+            </div><!-- end col -->        
+        </div><!-- end row -->
+    </div><!-- end container -->
+
+</section>
+        
+
+<%- include("../partials/footer") %>

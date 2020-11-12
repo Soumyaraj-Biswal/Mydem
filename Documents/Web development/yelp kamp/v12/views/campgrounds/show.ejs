@@ -2,7 +2,8 @@
 <section class="section wb">
     <div class="container">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1">
+            <div class="col-1"></div>
+            <div class="col-10">
                 <div class="row">
          
         <div >
@@ -16,9 +17,9 @@
                 
                 <div class="caption-full">
                     
-                    <img class="img-responsive" src="<%= camp.image %>" alt="">
+                    <img class="img-thumbnail" src="<%= camp.image %>" style="overflow: hidden;" alt="" >
                     
-                    <p><%- camp.sanitizedHtml %></p>
+                    <p style="text-overflow: hidden;"><%- camp.sanitizedHtml %></p>
                     <% if(currentUser && camp.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) {%>
                         <a class="btn btn-warning" href="/campgrounds/<%= camp._id%>/edit">Edit</a>
                         <form class="delete-form" action="/campgrounds/<%= camp._id%>?_method=DELETE" method="post">
@@ -65,7 +66,9 @@
             </div>
         </div>
         </div>
+        
         </div>
+        <div class="col-1"></div>
         </div>
         </div>
         </section>

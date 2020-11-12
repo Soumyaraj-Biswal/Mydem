@@ -1,5 +1,27 @@
 <%- include("../partials/header") %>
-  <section class="section wb">
+<div class="page-title wb">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+              <h2>Notifications</h2>
+          </div><!-- end col -->
+          <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/campgrounds">Home</a></li>
+                  
+                  <li class="breadcrumb-item active">Notifications</li>
+              </ol>
+          </div><!-- end col -->                    
+      </div><!-- end row -->
+  </div><!-- end container -->
+</div><!-- end page-title --> 
+
+
+
+
+
+
+<section class="section wb">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -12,7 +34,7 @@
                         <img style="vertical-align: middle; width: 50px; height: 50px;" class="mr-3" src="<%= c.image%>" alt="<%= c.name %>">
                         <div class="media-body">
                           <h5 class="my-0"><%= c.name %></h5>
-                          <%= c.description.substring(0,100); %>  
+                           
                           <em style="display: block;"><a href="/user/<%= c.author.id %>"><%= c.author.username %></a> created a new post</em>
                         </div>
                       </div>
